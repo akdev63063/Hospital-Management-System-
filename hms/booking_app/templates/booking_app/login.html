@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS | Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-slate-900 tracking-tight">Hospital Management System</h2>
+        <p class="mt-2 text-center text-sm text-slate-600">
+            Sign in to access your secure Doctor or Patient dashboard
+        </p>
+    </div>
+
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-slate-100">
+            {% if messages %}
+            <div class="mb-4 space-y-2">
+                {% for message in messages %}
+                <div class="p-3 text-sm {% if message.tags == 'error' %}text-red-700 bg-red-50 border border-red-100{% else %}text-emerald-700 bg-emerald-50 border border-emerald-100{% endif %} rounded-md">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form class="space-y-6" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label class="block text-sm font-medium text-slate-700">Username</label>
+                    <input type="text" name="username" required class="mt-1 w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700">Password</label>
+                    <input type="password" name="password" required class="mt-1 w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 border-slate-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-slate-900">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-6 text-center">
+                <a href="{% url 'signup' %}" class="text-sm font-medium text-blue-600 hover:text-blue-500">
+                    Need an account? Sign Up Now
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

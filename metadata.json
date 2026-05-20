@@ -1,0 +1,6 @@
+{
+  "name": "Hospital Management System",
+  "description": "Hospital appointment booking with doctor dashboards, patient scheduling, Google Calendar integrations, and simulated serverless email services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

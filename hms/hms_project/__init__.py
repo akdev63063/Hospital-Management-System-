@@ -1,0 +1,1 @@
+# HMS Django Project Init
